@@ -26,19 +26,14 @@ typeset -U cdpath fpath infopath manpath path
 
 cdpath=(
   $HOME
-  $HOME/Developer
 )
 
 infopath=(
-  $HOME/.tilde/share/info
-  $HOME/.tilde/opt/share/info
   /usr/local/share/info
   /usr/share/info
 )
 
 manpath=(
-  $HOME/.tilde/share/man
-  $HOME/.tilde/opt/share/man
   /usr/local/share/man
   /usr/share/man
 )
@@ -48,8 +43,6 @@ for path_file in /etc/manpaths.d/*(.N); do
 done
 
 path=(
-  $HOME/.tilde/bin
-  $HOME/.tilde/opt/bin
   /usr/local/bin
   /usr/local/sbin
   /usr/bin
