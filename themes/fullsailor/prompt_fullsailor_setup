@@ -42,7 +42,7 @@ function prompt_fullsailor_precmd () {
   unsetopt XTRACE KSH_ARRAYS
 
   if (( $+functions[git-info] )); then
-    git-info
+    git-info # refresh git info
   fi
   print -rP $'$(time_info) $(user_info) at $(host_info) in $(path_info) $(git_info)' 
 }
@@ -60,9 +60,9 @@ function prompt_fullsailor_setup() {
 
   zstyle ':omz:plugin:git:prompt' prompt 'on %b%A%B%D'
   zstyle ':omz:plugin:git:prompt' branch '%F{magenta}%b%f'
-  zstyle ':omz:plugin:git:prompt' ahead '%F{yellow}⬆%f'
-  zstyle ':omz:plugin:git:prompt' behind '%F{yellow}⬇%f%'
-  zstyle ':omz:plugin:git:prompt' dirty '%F{yellow}ϟ%f'
+  zstyle ':omz:plugin:git:prompt' ahead '%F{yellow}↑%f'
+  zstyle ':omz:plugin:git:prompt' behind '%F{yellow}↓%f%'
+  zstyle ':omz:plugin:git:prompt' dirty '%F{red}ϟ%f'
 
   PROMPT='$(prompt_char) ' 
 }
