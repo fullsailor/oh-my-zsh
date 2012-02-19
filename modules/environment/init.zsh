@@ -67,7 +67,7 @@ fi
 
 # Editors
 export EDITOR="vim"
-export VISUAL="vim"
+export VISUAL="mvim"
 export PAGER='less'
 
 # Grep
