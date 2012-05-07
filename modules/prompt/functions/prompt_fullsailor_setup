@@ -20,7 +20,7 @@ function host_info {
 }
 
 function path_info {
-  echo "%F{cyan}$(nocorrect PWD)%f"
+  echo "%F{cyan}%2~%f"
 }
 
 # My home directory is a git repo of my dotfiles. I do not want my prompt to lie
@@ -44,7 +44,7 @@ function prompt_fullsailor_precmd () {
   if (( $+functions[git-info] )); then
     git-info # refresh git info
   fi
-  print -rP $'$(time_info) $(user_info) at $(host_info) in $(path_info) $(git_info)' 
+  print -rP $'$(time_info) $(user_info) at $(host_info) in $(path_info) ${git_info[prompt]}' 
 }
 
 function prompt_fullsailor_setup() {
@@ -58,11 +58,13 @@ function prompt_fullsailor_setup() {
   # For Vi mode
   zstyle ':omz:prompt' vicmd '%F{yellow}❮%f%B%F{red}❮%f%b%F{red}❮%f'
 
-  zstyle ':omz:plugin:git:prompt' prompt 'on %b%A%B%D'
-  zstyle ':omz:plugin:git:prompt' branch '%F{magenta}%b%f'
-  zstyle ':omz:plugin:git:prompt' ahead '%F{yellow}↑%f'
-  zstyle ':omz:plugin:git:prompt' behind '%F{yellow}↓%f%'
-  zstyle ':omz:plugin:git:prompt' dirty '%F{red}ϟ%f'
+  zstyle ':omz:module:git' info \
+         'prompt' 'on %b%A%B%D'\
+         'rprompt' ''
+  zstyle ':omz:module:git' branch '%F{magenta}%b%f'
+  zstyle ':omz:module:git' ahead '%F{yellow}↑%f'
+  zstyle ':omz:module:git' behind '%F{yellow}↓%f%'
+  zstyle ':omz:module:git' dirty '%F{red}ϟ%f'
 
   PROMPT='$(prompt_char) ' 
 }
